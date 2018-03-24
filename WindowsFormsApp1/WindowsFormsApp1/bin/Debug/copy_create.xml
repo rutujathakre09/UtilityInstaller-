@@ -1,0 +1,14 @@
+<filecopy>
+<file_id action="copy">
+<file_name>VoDManager.exe</file_name>
+</file_id>
+<file_id action="create">
+<file_name>VoDManager.bat</file_name>
+<content>"REM VoDManager Version2.0 \r\n start \"VoDManager(2.02)\" <installPath>\VoDManager.exe -a <ipaddress> -p <port> -c <contentPath> -i <XMLPath>"</context>
+</file_id>
+<file_id action="create" resource="<XMLPath>" repeat="resource:config.streamer">
+<file_name>"LCN-<resource:config.streamer[_index].id>.bat"</file_name>
+<content>"REM LCN  Version 2.02 \r\n
+start \"LCN(2.02)-<resource:config.streamer[_index].id>\" <installPath>\multicastserver.exe  -m 0 -v <ipaddress> -p <port> -u <resource:config.streamer[_index].ip.address> -o <resource:config.streamer[_index].ip.port> -s 1 -c <contentPath> -n 7 -b 0 -l 0"</context>
+</file_id>
+</filecopy>
